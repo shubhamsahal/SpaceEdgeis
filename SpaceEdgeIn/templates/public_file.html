@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ filename }} - Edge Space Share</title>
+    <link rel="icon" type="image/png" href="/static/Images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        body { margin:0; background:#18181a; font-family: 'Inter', sans-serif; color:#fff; }
+        .main-card {
+            background: #232326;
+            max-width: 520px;
+            margin: 60px auto 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px #0003;
+            padding: 48px 32px 36px 32px;
+            text-align: center;
+        }
+        .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 64px 24px 64px;
+        background: #1976d200;
+        box-shadow: 0 0 0 rgba(199, 3, 3, 0); /* Clean header no shadow */
+        }
+        
+        .file-title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #fff;
+            word-break: break-all;
+        }
+        .preview {
+            margin-bottom: 28px;
+        }
+        .file-preview-img {
+            max-height: 220px;
+            max-width: 94%;
+            border-radius: 8px;
+            box-shadow: 0 2px 16px #0005;
+            background: #202021;
+        }
+        .file-preview-icon {
+            width: 72px; height: 72px;
+            margin-bottom: 8px;
+        }
+        .file-txtbox {
+            background:#232831;
+            color:#eaeaea;
+            padding:16px 11px; border-radius:8px;
+            font-size:1rem; text-align:left;
+            max-height:140px; overflow:auto;
+        }
+        /* Updated button styles with new padding */
+        .btn-download {
+            background: #1976d2;
+            color: #fff;
+            font-size: 1.23rem;
+            font-weight: 700;
+            border: none;
+            padding: 17px 24px 17px 44px;
+            border-radius: 13px;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px #1155cc33;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .btn-copy-link {
+            background: #333;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.23rem;
+            border: none;
+            padding: 17px 24px 17px 44px;
+            border-radius: 12px;
+            margin-top: 13px;
+            box-shadow: 0 4px 20px #18181833;
+            cursor: pointer;
+            letter-spacing: .05em;
+            transition: background 0.18s;
+        }
+
+        /* Styles for the icon and text alignment */
+        .icon-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Adjust icon size */
+        .icon-link img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .btn-copy-link:hover { background: #007bff; }
+        .btn-download:hover { background:#1255a8; }
+        .btn-homepage, .btn-auth {
+            background: #232326;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            padding: 12px 38px;
+            border-radius: 13px;
+            margin: 8px 8px 0 8px;
+            box-shadow: 0 2px 7px #18181833;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+        .btn-homepage:hover, .btn-auth:hover { background: #007aff; color: #fff; }
+        .sign-in-row {
+            margin-top:34px;
+            font-size:1.07rem;
+            color:#bbb;
+        }
+        @media (max-width:600px){
+            .main-card{padding:28px 8px;}
+            .file-title{font-size:1.16rem;}
+            .btn-download{padding:12px 24px; font-size:1rem;}
+            .file-txtbox{font-size:0.97rem;padding:9px 6px;}
+            .btn-homepage, .btn-auth { padding: 10px 22px; font-size: .93rem; }
+        }
+    </style>
+</head>
+
+<div class="header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='Images/left-side-logo-right-side-text.png') }}" alt="Space Edge Logo" style="width: 300px; height: auto;">
+        </a>
+    </div>
+
+<body>
+    <div class="main-card">
+        <div class="file-title">{{ filename }}</div>
+        <div class="preview">
+            {% if preview and thumbnail_url %}
+                <img class="file-preview-img" src="{{ thumbnail_url }}" alt="Image preview">
+            {% elif preview and file_ext == 'txt' and preview_txt %}
+                <div class="file-txtbox"><pre>{{ preview_txt }}</pre></div>
+            {% elif file_ext == 'psd' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/psd-icon.png') }}" alt="PSD icon">
+            {% elif file_ext == 'png' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/png-icon.png') }}" alt="Png icon">
+            {% elif file_ext == 'apk' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/apk-icon.png') }}" alt="Apk icon">
+            {% elif file_ext == 'avi' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/avi-icon.png') }}" alt="Avi icon">
+            {% elif file_ext == 'css' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/css-icon.png') }}" alt="Css icon">
+            {% elif file_ext == 'doc' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/doc-icon.png') }}" alt="Doc icon">
+            {% elif file_ext == 'docx' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/docx-icon.png') }}" alt="Docx icon">
+            {% elif file_ext == 'exe' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/exe-icon.png') }}" alt="Exe icon">
+            {% elif file_ext == 'gif' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/gif-icon.png') }}" alt="Gif icon">
+            {% elif file_ext == 'html' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/html-icon.png') }}" alt="Html icon">
+            {% elif file_ext == 'jpeg' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/Jpeg-icon.png') }}" alt="Jpeg icon">
+            {% elif file_ext == 'mov' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/mov-icon.png') }}" alt="Mov icon">
+            {% elif file_ext == 'mp3' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/mp3-icon.png') }}" alt="Mp3 icon">
+            {% elif file_ext == 'msi' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/msi-icon.png') }}" alt="Msi icon">
+            {% elif file_ext == 'pdf' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/pdf-icon.png') }}" alt="Pdf icon">
+            {% elif file_ext == 'txt' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/txt-icon.png') }}" alt="Txt icon">
+            {% elif file_ext == 'xls' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/xls-icon.png') }}" alt="Xls icon">
+            {% elif file_ext == 'zip' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/zip-icon.png') }}" alt="Zip icon">
+            {% elif file_ext == 'py' %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/py-icon.png') }}" alt="Py icon">
+            {% else %}
+                <img class="file-preview-icon" src="{{ url_for('static', filename='icons/default-icon.png') }}" alt="File icon">
+            {% endif %}
+        </div>
+        <a href="{{ url_for('public_file_download', user_email=user_email, filename=filename) }}" class="btn-download icon-link">
+            <img src="{{ url_for('static', filename='icons/download-icon.png') }}" alt="Download Icon">
+            DOWNLOAD
+        </a>
+        <button id="copy-link-btn" class="btn-copy-link icon-link">
+            <img src="{{ url_for('static', filename='icons/copylink-icon.png') }}" alt="Copy Link Icon">
+            COPY LINK
+        </button>
+        <div class="sign-in-row">Sign Up for More Features or Upload Your Own Files.</div>
+        <a href="{{ url_for('register') }}" class="btn-auth">Sign Up</a>
+        <a href="{{ url_for('login') }}" class="btn-auth">Login</a>
+    </div>
+    <script>
+        document.getElementById('copy-link-btn').addEventListener('click', () => {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Link copied successfully!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    </script>
+</body>
+</html>

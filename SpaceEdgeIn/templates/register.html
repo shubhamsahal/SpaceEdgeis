@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register | Space Edge</title>
+    <link rel="icon" type="image/png" href="/static/Images/logo.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background: #faf9f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px 64px 24px 64px;
+            background: #ffffff00;
+            box-shadow: 0 0 0 rgba(0,0,0,0); /* Clean header no shadow */
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 360px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #222;
+        }
+        form.register-form {
+            max-width: 320px;
+            margin: 0 auto;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        label {
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        input[type="email"],
+        input[type="text"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 11px 10px;
+            margin-bottom: 16px;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f7fafe;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0252cc;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background: #003780;
+        }
+        p {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+        a {
+            color: #0066ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+.btn-google {
+    display: inline-flex; /* Use flexbox for alignment */
+    align-items: center;   /* Vertically center items */
+    justify-content: center; /* Horizontally center items */
+    gap: 12px; /* Add space between the icon and text */
+    margin-top: 18px;
+    padding: 12px 0;
+    width: 340px; 
+    background-color: #0252cc;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.btn-google:hover {
+    background-color: #003780;
+}
+.btn-google svg {
+    /* Optional: If the SVG needs specific adjustments */
+    width: 20px;
+    height: 20px;
+}
+        .flash {
+            margin-bottom: 12px;
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .flash.error { color: #b33a3a; background: #ffe6e6; }
+        .flash.success { color: #2f7a2f; background: #e6ffe6; }
+        .flash.info { color: #174ea6; background: #e6f0ff; }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='Images/left-side-logo-right-side-text.png') }}" alt="Space Edge Logo" style="height: 100px; width: auto;">
+        </a>
+</body>
+
+
+    
+    <div class="container">
+        <h2>Register</h2>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, msg in messages %}
+                    <div class="flash {{ category }}">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <a href="{{ url_for('google_login') }}" class="btn-google">
+    <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M17.64 9.20455C17.64 8.56682 17.5827 7.95273 17.4764 7.36364H9V10.845H13.8436C13.635 11.97 13.0009 12.9232 12.0477 13.5618V15.8195H14.9564C16.6582 14.2527 17.64 11.9455 17.64 9.20455Z" fill="#FFFFFF"/>
+        <path d="M9 18C11.43 18 13.4673 17.1941 14.9564 15.8195L12.0477 13.5618C11.2418 14.1018 10.2109 14.4205 9 14.4205C6.66 14.4205 4.67182 12.8373 3.96409 10.71H0.957275V13.0418C2.43818 15.9873 5.48182 18 9 18Z" fill="#FFFFFF"/>
+        <path d="M3.96409 10.71C3.78409 10.17 3.68182 9.59318 3.68182 9C3.68182 8.40682 3.78409 7.83 3.96409 7.29H0.957275C0.347727 8.55 0 10.0145 0 12.0455C0 13.9855 0.347727 15.45 0.957275 16.71L3.96409 14.29Z" fill="#FFFFFF"/>
+        <path d="M9 3.57955C10.3218 3.57955 11.5077 4.02455 12.4405 4.92545L15.0218 2.34409C13.4632 0.891818 11.4259 0 9 0C5.48182 0 2.43818 2.01273 0.957275 4.95818L3.96409 7.29C4.67182 5.16273 6.66 3.57955 9 3.57955Z" fill="#FFFFFF"/>
+    </svg>
+    <span>Login Or Signup with Google</span>
+</a>
+        <!-- Step 1: Enter Email -->
+        <form method="POST" action="/register" class="register-form">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ email or '' }}" required>
+            <button type="submit" name="action" value="send_otp">Send OTP</button>
+        </form>
+
+        {% if otp_sent %}
+        <!-- Step 2: Enter OTP -->
+        <form method="POST" action="/register" class="register-form">
+            <label>Enter OTP:</label>
+            <input type="text" name="otp" required>
+            <button type="submit" name="action" value="verify_otp">Verify OTP</button>
+        </form>
+        {% endif %}
+
+        {% if otp_verified %}
+        <!-- Step 3: Set Name + Password -->
+        <form method="POST" action="/register" class="register-form">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit" name="action" value="set_password">Set Account</button>
+        </form>
+        {% endif %}
+
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+</body>
+</html>

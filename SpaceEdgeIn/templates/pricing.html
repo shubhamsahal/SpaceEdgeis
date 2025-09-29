@@ -1,0 +1,156 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>Pricing Plans | Edge Space</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    
+
+    
+    .pricing-container {
+      max-width: 960px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .pricing-title {
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .pricing-subtitle {
+      font-size: 18px;
+      color: #8e8e93;
+      margin-bottom: 40px;
+    }
+    .plan-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .plan-card {
+      background: #f9f9f9;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      padding: 32px;
+      flex: 1;
+      min-width: 280px;
+      max-width: 380px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card:hover {
+      border-color: #007aff;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .plan-title {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .plan-price {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #007aff;
+    }
+    .plan-price-subtitle {
+      font-size: 16px;
+      color: #8e8e93;
+      margin-bottom: 24px;
+    }
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      flex-grow: 1;
+    }
+    .plan-features li {
+      font-size: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      color: #4a4a4a;
+    }
+    .plan-features li::before {
+      content: '✔';
+      color: #007aff;
+      font-weight: 600;
+      margin-right: 12px;
+      font-size: 18px;
+    }
+    .plan-button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background-color: #007aff;
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease-in-out;
+      margin-top: auto;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(0,122,255,0.4);
+    }
+    .plan-button:hover {
+      background-color: #005bbb;
+    }
+  </style>
+
+
+
+  <div class="pricing-container">
+    <h1 class="pricing-title">Simple, Transparent Pricing</h1>
+    <p class="pricing-subtitle">Choose the plan that's right for you. Change or cancel anytime.</p>
+    <div class="plan-container">
+      <!-- Free Plan -->
+      <div class="plan-card">
+        <div class="plan-title">Basic</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-price-subtitle">per month</div>
+        <ul class="plan-features">
+          <li>15 GB of storage</li>
+          <li>Basic file upload & management</li>
+          <li>Standard sharing</li>
+        </ul>
+        <button class="plan-button" onclick="window.location.href = '/register'">Get Basic</button>
+      </div>
+
+      <!-- Pro Plan -->
+      <div class="plan-card">
+        <div class="plan-title">Pro</div>
+        <div class="plan-price">$7</div>
+        <div class="plan-price-subtitle">per month</div>
+        <ul class="plan-features">
+          <li>500 GB of storage</li>
+          <li>Advanced sharing controls</li>
+          <li>File versioning</li>
+          <li>Two-factor authentication (2FA)</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="plan-button" id="go-pro-btn">Go Pro</button>
+      </div>
+    </div>
+  </div>

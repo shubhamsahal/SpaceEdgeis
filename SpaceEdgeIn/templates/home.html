@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Space Edge</title>
+  <link rel="icon" type="image/png" href="/static/Images/logo.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --glow-color: hsl(218, 100%, 75%);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100vw;
+      font-family: 'Inter', sans-serif;
+      /* ✅ MODIFICATION: New, more vibrant gradient for a noticeable effect */
+     /* ✅ MODIFICATION: Colors converted to RGBA to control opacity.
+   Change the last number (e.g., 0.8) to adjust the opacity of each color. */
+background: linear-gradient(120deg, rgba(207, 216, 220, 0.8), rgba(167, 199, 231, 0.8), rgba(197, 198, 199, 0.8), rgba(100, 100, 100, 0.8));
+      background-size: 200% 200%;
+      /* ✅ MODIFICATION: Slightly faster animation */
+      animation: gradientAnimation 12s ease infinite;
+      box-sizing: border-box;
+      color: #262626;
+      min-width: 320px;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Keyframes for the background animation */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .nav-container {
+        position: fixed;
+        top: 16px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        padding: 0 16px;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px 8px 24px;
+      height: 64px;
+      border-radius: 9999px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 24px;
+      color: #1d1d1f;
+      letter-spacing: -0.01em;
+      user-select: none;
+    }
+
+    .logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 32px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+        font-size: 16px;
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: #007aff;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 9999px;
+      padding: 10px 24px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      font-family: inherit;
+      text-align: center;
+    }
+    
+    .nav-btn.main {
+      background: #007aff;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+    }
+    
+    .nav-btn.secondary {
+        background: transparent;
+        color: #007aff;
+    }
+
+    .nav-btn.main:hover {
+      background: #055fd6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
+    }
+    
+    .nav-btn.secondary:hover {
+      background: #e9f3ff;
+      color: #005bbb;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15vh 16px 50px;
+      width: 100%;
+      box-sizing: border-box;
+      flex-grow: 1;
+      animation: contentFadeIn 1.3s ease-out;
+    }
+
+    @keyframes contentFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 36px;
+      box-shadow: 0 10px 40px rgba(0, 91, 187, 0.08);
+      max-width: 560px;
+      width: 100%;
+      padding: 56px 40px 44px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.1s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    .headline {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 27px;
+      color: #232330;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+
+    .subtext {
+      font-size: 1.25rem;
+      color: #313243;
+      margin-bottom: 38px;
+      line-height: 1.43;
+      font-weight: 400;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-btn {
+      background: #007aff;
+      color: #fff;
+      border: none;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 13px 36px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+      text-decoration: none;
+    }
+
+     .hero-btn:hover {
+      background: #055fd6;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
+    }
+
+    .outline-btn {
+      background: transparent;
+      color: #007aff;
+      border: 2px solid #007aff;
+      padding: 13px 36px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .outline-btn:hover {
+      background: rgba(0, 122, 255, 0.1);
+      border-color: #055fd6;
+      color: #055fd6;
+      transform: translateY(-2px);
+    }
+
+    .social-links {
+        margin-top: 40px;
+        display: flex;
+        gap: 24px;
+    }
+    .social-links a {
+        display: inline-block;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        opacity: 0.6;
+    }
+    .social-links a:hover {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    .social-links svg {
+        width: 32px;
+        height: 32px;
+        fill: #055fd6;
+    }
+
+    .featurebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .featurebar.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-icon {
+      background: #10152b;
+      padding: 15px 28px;
+      border-radius: 40px;
+      margin-bottom: 16px;
+      color: #fff;
+      font-size: 23px;
+      font-weight: 500;
+      display: inline-block;
+      box-shadow: 0 3px 14px #b2cfff11;
+      letter-spacing: .06em;
+    }
+
+    .feature-headline {
+      font-size: 1.29rem;
+      color: #141422;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .feature-desc {
+      color: #434b54;
+      margin-top: 3px;
+      font-size: 15px;
+      max-width: 520px;
+      line-height: 1.49;
+      margin-bottom: 11px;
+      font-weight: 400;
+      text-align: center;
+    }
+    
+    @media (max-width:768px) {
+        .nav-links {
+            display: none;
+        }
+        nav {
+            max-width: 100%;
+            border-radius: 0;
+        }
+        .nav-container {
+            top: 0;
+            padding: 0;
+        }
+        .main-content {
+          padding-top: 12vh;
+        }
+        .hero-card {
+          padding: 34px 18px;
+        }
+        .headline {
+          font-size: 2.1rem;
+        }
+        .subtext {
+          font-size: 1.09rem;
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav>
+      <a href="{{ url_for('home') }}" class="logo">
+        <img src="{{ url_for('static', filename='Images/logo.png') }}" alt="Space Edge Logo">
+        <span>Space Edge</span>
+      </a>
+
+      <div class="nav-links">
+          <a href="{{ url_for('about') }}">About</a>
+          <a href="{{ url_for('features') }}">Features</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="{{ url_for('register') }}" class="nav-btn main">Get started</a>
+        <a href="{{ url_for('login') }}" class="nav-btn secondary">Log in</a>
+
+      </div>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="hero-wrapper">
+        <!-- Hero Section -->
+        <div class="hero-card">
+          <div class="headline">Discover all.<br>Secure all.</div>
+          <div class="subtext">
+            Send large Files Instantly with Secure, free,<br>
+            and Easy to use SpaceEdge.
+          </div>
+          <div class="cta-row">
+            <a href="{{ url_for('register') }}" class="hero-btn">Try Space Edge Free</a>
+            <a href="{{ url_for('login') }}" class="outline-btn">Login</a>
+          </div>
+        </div>
+        
+        <!-- ⭐ NEW: Social Links Section -->
+        <div class="social-links">
+            <a href="https://www.linkedin.com/company/spaceedgein" target="_blank" aria-label="LinkedIn"> 
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    </svg>
+</a>
+
+            <a href="https://x.com/GetSpaceEdge" target="_blank" aria-label="Twitter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.588-7.52 2.588-.49 0-.974-.03-1.451-.086 2.685 1.723 5.877 2.73 9.342 2.73 8.791 0 13.597-7.292 13.597-13.597 0-.207-.005-.412-.013-.616.934-.673 1.75-1.512 2.39-2.475z"/>
+    </svg>
+</a>
+        </div>
+    </div>
+
+    <!-- Featurebar Section -->
+    <div class="featurebar">
+      <span class="feature-icon">🔒 Permissions</span>
+      <div class="feature-headline">Protect all your content</div>
+      <div class="feature-desc">
+        SpaceEdge makes it easy to find files across apps and safeguard sensitive content.
+        With smart search and universal access controls, your team stays connected, efficient, and secure.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- Interactive 3D Tilt Effect ---
+      const heroCard = document.querySelector('.hero-card');
+      if (heroCard) {
+        heroCard.addEventListener('mousemove', (e) => {
+          const { left, top, width, height } = heroCard.getBoundingClientRect();
+          const x = e.clientX - left;
+          const y = e.clientY - top;
+          const rotateX = (y / height - 0.5) * -15;
+          const rotateY = (x / width - 0.5) * 15;
+          heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+        });
+
+        heroCard.addEventListener('mouseleave', () => {
+          heroCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+      }
+
+      // --- Fade-in on Scroll Effect ---
+      const featureBar = document.querySelector('.featurebar');
+      if (featureBar) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        observer.observe(featureBar);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
+

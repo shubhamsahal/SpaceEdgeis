@@ -1,0 +1,62 @@
+{
+    "1": {
+        "email": "",
+        "name": "shub",
+        "password_hash": "$2b$12$4qjy4l8Q/6q6tUha7E0u2ObMTsgyRLdyg3ORrXpvlOZzXgXlWmwqq"
+    },
+    "2": {
+        "email": "",
+        "name": "shub2",
+        "password_hash": "$2b$12$Yvl/ZQYCQyEkC56fzn0N8up5C1LzanVkJgTez/P5l9us4rlY5HSLa"
+    },
+    "3": {
+        "email": "",
+        "name": "shub3",
+        "password_hash": "$2b$12$s3H9SqLx51PuumfiS83iVubxMTVvfL.wELbi7Tu15bJTTigtUI1yq"
+    },
+    "4": {
+        "email": "",
+        "name": "shub5",
+        "password_hash": "$2b$12$1iGFxEcC6RoU29OEvxDcbe6Hsr85ijPMJOnMFAMGMIwnwrKReUaLa"
+    },
+    "5": {
+        "email": "",
+        "name": "shubnew",
+        "password_hash": "$2b$12$Z.uXf.IVoq7dOZeGey3e.OqqtSvWgpNepKxUmbS9183LN/DQuNkTC"
+    },
+    "sophiadis768@gmail.com": {
+        "email": "",
+        "name": "sophiadis768@gmail.com",
+        "password_hash": "$2b$12$L.eBhaMzTFUsvFE3.25qGeNfIKGBI3IwYhSQ9pVNeuDoiBlkxmSbu"
+    },
+    "shubhamshal86@gmail.com": {
+        "email": "shubhamshal86@gmail.com",
+        "name": "Shubham",
+        "password_hash": "$2b$12$RlNc8i4qyvUWEiu.FyXSL.byDgRzdS.nSMWgfdligbQrtGZuYqZqC"
+    },
+    "564799042299756544": {
+        "email": "564799042299756544@discord",
+        "name": "jimmyfpsss",
+        "password_hash": ""
+    },
+    "edtizshubham@gmail.com": {
+        "email": "edtizshubham@gmail.com",
+        "name": "edtizshubham",
+        "password_hash": "$2b$12$V356DCuaZuUtNswH1LWppuSUlHfQgR2Kn33MZ2Uz6Kd9yhVrjPgGq"
+    },
+    "madhushal933@gmail.com": {
+        "email": "madhushal933@gmail.com",
+        "name": "madhu",
+        "password_hash": "$2b$12$O7moA7SCN122pHY.LPdffOasllUaiFBlZlI3nCjZQCJJE/tyZSA7u"
+    },
+    "theshubnet@gmail.com": {
+        "email": "theshubnet@gmail.com",
+        "name": "theshub",
+        "password_hash": "$2b$12$mxjD1YIEa.FDq7Jf2ohRGePCV9N.ACXQ2vKHtHgW5.NBfw9Hnd5Fy"
+    },
+    "ss27298194@gmail.com": {
+        "email": "ss27298194@gmail.com",
+        "name": "ss27",
+        "password_hash": "$2b$12$2gueFFKvu0MnUDRlY14Fn.L4fZME6.TVRf9n.SByYMUMoZJ4pUIg2"
+    }
+}

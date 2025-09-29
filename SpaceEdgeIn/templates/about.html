@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Space Edge</title>
+    <link rel="icon" type="image/png" href="/static/Images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100vw;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(108deg, #e9eaf0, #e6f0ff, #f4f6fa, #e9eaf0);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            box-sizing: border-box;
+            color: #262626;
+            min-width: 320px;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- NAVIGATION STYLES (Copied from home.html for consistency) --- */
+        .nav-container {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 0 16px;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px 8px 24px;
+            height: 64px;
+            border-radius: 9999px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 24px;
+            color: #1d1d1f;
+            user-select: none;
+        }
+
+        .logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007aff;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 9999px;
+            padding: 10px 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        .nav-btn.main {
+            background: #007aff;
+            color: #fff;
+        }
+
+        .nav-btn.secondary {
+            background: transparent;
+            color: #007aff;
+        }
+
+        .nav-btn.main:hover {
+            background: #055fd6;
+        }
+
+        .nav-btn.secondary:hover {
+            background: #e9f3ff;
+            color: #005bbb;
+        }
+        
+        /* --- MAIN CONTENT STYLES --- */
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 150px 16px 50px;
+            width: 100vw;
+            min-height: 60vh;
+            animation: contentFadeIn 1.3s ease-out;
+            box-sizing: border-box;
+        }
+
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New container for the about page content */
+        .about-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 36px;
+            box-shadow: 0 10px 40px rgba(0, 91, 187, 0.08);
+            max-width: 700px; /* Wider for more text */
+            width: 100%;
+            padding: 48px 40px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .about-container h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #232330;
+            letter-spacing: -0.01em;
+        }
+
+        .about-container p {
+            font-size: 1.15rem;
+            color: #313243;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            nav {
+                max-width: 100%;
+                border-radius: 0;
+            }
+            .nav-container {
+                top: 0;
+                padding: 0;
+            }
+            .main-content {
+              padding-top: 100px;
+            }
+            .about-container {
+              padding: 32px 24px;
+            }
+            .about-container h1 {
+                font-size: 2rem;
+            }
+            .about-container p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ✅ MODIFIED: Using the exact same navigation as home.html -->
+    <div class="nav-container">
+        <nav>
+            <a href="{{ url_for('home') }}" class="logo">
+                <img src="{{ url_for('static', filename='Images/logo.png') }}" alt="Space Edge Logo">
+                <span>Space Edge</span>
+            </a>
+<!--    
+            <div class="nav-links">
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+            </div>
+    -->
+            <div class="nav-actions">
+                <a href="{{ url_for('login') }}" class="nav-btn secondary">Log in</a>
+                <a href="{{ url_for('register') }}" class="nav-btn main">Get started</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ✅ MODIFIED: Using a new structure similar to home.html -->
+    <div class="main-content">
+        <section class="about-container">
+            <h1>About Space Edge</h1>
+            <p>
+                Space Edge is your secure, ultra modern file storage and sharing platform, built for users who value privacy, style, and speed.
+            </p>
+            <p>
+                Powered by Google OAuth2 and Azure Cloud, with smooth mobile support and elegant UI, Space Edge brings you peace of mind and effortless collaboration.
+            </p>
+            <p>
+                Enjoy easy uploads, instant sharing, and robust security without hidden costs or confusion. Experience better cloud storage.
+            </p>
+        </section>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Features Space Edge</title>
+    <link rel="icon" type="image/png" href="/static/Images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100vw;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(108deg, #e9eaf0, #e6f0ff, #f4f6fa, #e9eaf0);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            box-sizing: border-box;
+            color: #262626;
+            min-width: 320px;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- NAVIGATION STYLES (Consistent with other pages) --- */
+        .nav-container {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 0 16px;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px 8px 24px;
+            height: 64px;
+            border-radius: 9999px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 24px;
+            color: #1d1d1f;
+            user-select: none;
+        }
+
+        .logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007aff;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 9999px;
+            padding: 10px 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        .nav-btn.main {
+            background: #007aff;
+            color: #fff;
+        }
+
+        .nav-btn.secondary {
+            background: transparent;
+            color: #007aff;
+        }
+
+        .nav-btn.main:hover {
+            background: #055fd6;
+        }
+
+        .nav-btn.secondary:hover {
+            background: #e9f3ff;
+            color: #005bbb;
+        }
+        
+        /* --- MAIN CONTENT STYLES --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 150px 16px 50px;
+            width: 100vw;
+            min-height: 60vh;
+            animation: contentFadeIn 1.3s ease-out;
+            box-sizing: border-box;
+        }
+
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .features-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 36px;
+            box-shadow: 0 10px 40px rgba(0, 91, 187, 0.08);
+            max-width: 700px;
+            width: 100%;
+            padding: 48px 40px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .features-container h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 32px;
+            color: #232330;
+            text-align: center;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #313243;
+            padding: 18px 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+            transition: background-color 0.2s ease;
+            border-radius: 12px;
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li:hover {
+             background-color: rgba(0, 122, 255, 0.05);
+        }
+
+        /* ✅ MODIFIED: Styling for the new SVG icons */
+        .feature-icon {
+            margin-right: 18px;
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+            color: #007aff;
+            flex-shrink: 0; /* Prevents icon from shrinking */
+        }
+
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            nav {
+                max-width: 100%;
+                border-radius: 0;
+            }
+            .nav-container {
+                top: 0;
+                padding: 0;
+            }
+            .main-content {
+              padding-top: 100px;
+            }
+            .features-container {
+              padding: 32px 24px;
+            }
+            .features-container h1 {
+                font-size: 2rem;
+            }
+            .features-list li {
+                font-size: 1rem;
+                padding: 16px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="{{ url_for('home') }}" class="logo">
+                <img src="{{ url_for('static', filename='Images/logo.png') }}" alt="Space Edge Logo">
+                <span>Space Edge</span>
+            </a>
+    
+            <div class="nav-links">
+               <!-- 
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('features') }}">Features</a>
+                <a href="#">Pricing</a> -->
+            </div>
+    
+            <div class="nav-actions">
+                <a href="{{ url_for('login') }}" class="nav-btn secondary">Log in</a>
+                <a href="{{ url_for('register') }}" class="nav-btn main">Get started</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <section class="features-container">
+            <h1>Core Features</h1>
+            <!-- ✅ MODIFIED: Replaced emojis with SVG icons -->
+            <ul class="features-list">
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Secure Cloud Storage (Azure-backed)</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="m19 12-7 7 7 7"/></svg>
+                    <span>Superfast Uploads & Downloads</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <span>Smart File Search</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path></svg>
+                    <span>Easy File Preview & Public Sharing Links</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <span>Google OAuth2 Sign-In (no passwords)</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    <span>Responsive, Mobile-Friendly UI</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span>Simple Dashboard for File Management</span>
+                </li>
+                <li>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    <span>Always Free with No Hidden Pricing</span>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
+
