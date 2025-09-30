@@ -311,6 +311,13 @@ def features():
     return render_template('features.html')
 
 
+@app.route('/privacy')
+def privacy():
+    # You will need to create a 'privacy.html' template file
+    return render_template('privacy.html')    
+
+
+
 @app.route("/google/login")
 def google_login():
     redirect_uri = url_for("google_callback", _external=True)
@@ -634,3 +641,4 @@ def handle_file_too_large(e):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
