@@ -19,7 +19,7 @@ To store your uploaded files and display them in your account dashboard.
 
 To enable file sharing when you generate a public share link.
 
-To maintain and improve our service—never for advertising or sales.
+To maintain and improve our service never for advertising or sales.
 
 Sharing and Disclosure
 We do not sell or rent your data to anyone.
