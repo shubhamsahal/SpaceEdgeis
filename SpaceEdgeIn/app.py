@@ -318,6 +318,16 @@ def privacy():
 
 
 
+# ✅ NEW: Custom Error Handler for 404 Not Found
+@app.errorhandler(404)
+def page_not_found(e):
+    # Flash a helpful message to the user
+   # flash("Sorry, the page you were looking for doesn't exist. We've brought you back home.", "warning")
+    # Redirect to the homepage
+    return redirect(url_for('home'))
+
+
+
 @app.route("/google/login")
 def google_login():
     redirect_uri = url_for("google_callback", _external=True)
@@ -641,4 +651,5 @@ def handle_file_too_large(e):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
